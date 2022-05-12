@@ -23,16 +23,33 @@ namespace AlgoritmalarLab
         }
         static bool AsalMi(int sayi)
         {
-            bool bl=true;
-            for (int i = 2; i < sayi/2; i++)
+            bool bl = true;
+            for (int i = 2; i < sayi / 2; i++)
             {
-                if (sayi % i == 0) return bl=false;
+                if (sayi % i == 0) return bl = false;
             }
             return bl;
-        } 
-        
-        
-        
+        }
+        static bool Kaprekar(double kare, double sayi)
+        {
+            if (kare == 1) return true;
+            int kuvvet = 10;
+            while (kuvvet<=kare)
+            {
+                int sayiSol = Convert.ToInt32(kare / kuvvet);
+                int sayiSag = Convert.ToInt32(kare % kuvvet);
+                int toplam = sayiSol + sayiSag;
+                if (toplam == sayi)
+                {
+                    return true;
+                    break;
+                }
+                kuvvet *= 10;
+            }
+            return false;
+        }
+
+
         static void Main(string[] args)
         {
             //                                          1 or x = 1
@@ -216,6 +233,24 @@ namespace AlgoritmalarLab
             if (sayi == sonuc) Console.WriteLine("karesiz sayı");
             else Console.WriteLine("değil");
             */
+            #endregion
+            #region kaprekar sayılar
+            ///Console.WriteLine("sayi giriniz: ");
+            double sayi = 9;///Convert.ToDouble(Console.ReadLine());
+            /*
+             kaprekar sayılar:1,9,45,55,99,297,999,2223,2728,4879,....
+             */
+            double kare = sayi * sayi;
+            if (Kaprekar(kare, sayi))
+            {
+                Console.WriteLine("kaprekar");
+            }
+            else
+            {
+                Console.WriteLine("değil");
+            }
+            //3025 , 3025/10=302.5--3025%10=5
+            //3025 , 3025/100=30,25--3025%100=25
             #endregion
 
         }
